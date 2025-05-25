@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위드-유 인성놀이터 - 마음챙김 콘텐츠</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .program-card {
+            background: linear-gradient(145deg, #f0f8ff, #e8f4fd);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-card h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card .activities {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .program-card .activities li {
+            padding: 0.3rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .program-card .activities li:before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+        }
+
+        .program-card .activities a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .program-card .activities a:hover {
+            color: #5a67d8;
+            text-decoration: underline;
+        }
+
+        /* Features */
+        .features {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tags {
+                flex-wrap: wrap;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">위드-유 인성놀이터</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#programs">마음챙김 놀이</a></li>
+                <li><a href="#chatbot">마음봄 챗봇</a></li>
+                <li><a href="#features">특징</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>인성이 꽃피는<br>위드-유 인성놀이터</h1>
+                <p>마음챙김을 통한 건강한 인성 교육 프로그램</p>
+                
+                <div class="tags">
+                    <span class="tag"># 마음챙김</span>
+                    <span class="tag"># 단계별 학습</span>
+                    <span class="tag"># 영상 콘텐츠</span>
+                </div>
+
+                <a href="#programs" class="cta-button">마음챙김 놀이 둘러보기</a>
+            </div>
+        </section>
+
+        <section id="programs" class="content-section">
+            <div class="container">
+                <h2 class="section-title">마음챙김 놀이 활동</h2>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <h3>🌱 마음의 나침반 찾기</h3>
+                        <p>자신의 감정을 이해하고 타인과 소통하는 기초 능력을 기르는 프로그램</p>
+                        <ul class="activities">
+                            <li><a href="https://www.canva.com/design/DAFO3IKQCak/jvos-Z5i-fWyNHrCW-_hxQ/watch?utm_content=DAFO3IKQCak&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">나의 감정 버튼은? 🎥</a></li>
+                            <li><a href="https://www.canva.com/design/DAFO5xad1Ck/caezsWRvH8C2eahVNJ0FzQ/watch?utm_content=DAFO5xad1Ck&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">나는 왜 화가 날까? 🎥</a></li>
+                            <li><a href="https://youtu.be/ercA26q96ps" target="_blank">기분-감정-정서 📺</a></li>
+                            <li><a href="https://www.canva.com/design/DAFNPcyQxtM/nBmPOrB6dMXsjtMWfr5_qw/watch?utm_content=DAFNPcyQxtM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">너도? 나도! 🎥</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="program-card">
+                        <h3>🧘 마음과 몸의 만남</h3>
+                        <p>몸과 마음의 연결을 깊이 체험하며 마음챙김을 심화하는 활동들</p>
+                        <ul class="activities">
+                            <li><a href="https://www.canva.com/design/DAFMuP_q3KU/ewnxseLUMGyqkZtzxU7YMw/watch?utm_content=DAFMuP_q3KU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">상상 속 레몬 맛은? (몸과 마음의 연결) 🎥</a></li>
+                            <li><a href="https://www.canva.com/design/DAFKwpcRbio/CwpZOQE9uq7Cy5su9nVQOQ/watch?utm_content=DAFKwpcRbio&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">날숨에 집중하며 🎥</a></li>
+                            <li><a href="https://www.canva.com/design/DAFO5jG-EJ0/WfuVAS74PVorGFUOZ73kpQ/watch?utm_content=DAFO5jG-EJ0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&success=true&continue_in_browser=true" target="_blank">머릿 속 닻 내리기 🎥</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chatbot" class="content-section" style="background: linear-gradient(135deg, #ffeef8 0%, #f0f8ff 100%);">
+            <div class="container">
+                <h2 class="section-title" style="color: #667eea;">🌸 마음봄 챗봇 코너</h2>
+                
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <div style="background: white; padding: 3rem; border-radius: 25px; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.1); border: 1px solid rgba(255, 182, 193, 0.3);">
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">🤖🌸</div>
+                        <h3 style="color: #667eea; font-size: 1.8rem; margin-bottom: 1.5rem;">마음봄과 대화하며 마음을 돌보세요</h3>
+                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2.5rem;">
+                            AI 챗봇 마음봄이 여러분의 마음을 들어드립니다.<br>
+                            일상의 고민부터 깊은 마음챙김까지, 따뜻한 대화로 함께해요.
+                        </p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2.5rem;">
+                            <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"># AI 상담사</span>
+                            <span style="background: rgba(255, 182, 193, 0.2); color: #e91e63; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"># 24시간 대화</span>
+                            <span style="background: rgba(76, 175, 80, 0.1); color: #4caf50; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"># 마음 치유</span>
+                        </div>
+                        
+                        <a href="https://chatgpt.com/g/g-6735399fe05c81908ab27480dd89f233-maeumbom-2025-04-09" target="_blank" 
+                           style="display: inline-block; background: linear-gradient(45deg, #ff6b6b, #ffa726); color: white; 
+                                  padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; 
+                                  font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);"
+                           onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(255, 107, 107, 0.4)'"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(255, 107, 107, 0.3)'">
+                            🌸 마음봄과 대화하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">프로그램 특징</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧘</div>
+                        <h3>단계별 마음챙김</h3>
+                        <p>기초부터 심화까지 체계적으로 구성된 2단계 마음챙김 프로그램</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🌸</div>
+                        <h3>마음봄 연계</h3>
+                        <p><a href="https://plusiam.github.io/maumbom-website/" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500;">마음봄 홈페이지</a>와 함께하는 확장된 마음챙김 여정</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>체험적 학습</h3>
+                        <p>놀이를 통해 재미있고 몰입도 높은 마음챙김 교육 경험 제공</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>교과 연계</h3>
+                        <p>정규 교과과정과 연계하여 자연스럽게 통합할 수 있는 프로그램</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>위드-유 배움놀이 연구소</h3>
+                <p>마음챙김 교육을 통해 더 나은 세상을 만들어갑니다</p>
+                <p>깊이 있는 수업연구와 교육혁신을 추구합니다</p>
+            </div>
+            <div>
+                <p>&copy; 2024 위드-유 인성놀이터. 모든 권리 보유.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://plusiam.github.io/maumbom-website/" target="_blank" 
+                       style="color: #667eea; text-decoration: none; font-weight: 500; 
+                              transition: color 0.3s ease; border-bottom: 1px solid transparent;"
+                       onmouseover="this.style.color='#5a67d8'; this.style.borderBottom='1px solid #5a67d8'"
+                       onmouseout="this.style.color='#667eea'; this.style.borderBottom='1px solid transparent'">
+                        🌸 마음봄 홈페이지 바로가기
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.program-card, .feature-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
